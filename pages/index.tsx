@@ -1,8 +1,9 @@
 import { Montserrat } from '@next/font/google';
-import { useTranslation } from 'next-i18next';
+import { i18n, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useState } from 'react';
 import Product from '../components/Product';
 import { client } from '../lib/client';
 
@@ -15,6 +16,7 @@ type Props = {
 export default function Home({ products }: Props) {
   const { t } = useTranslation();
   const categories = ['to_share', 'to_continue', 'for_kids', 'dessert', 'wine_beer'];
+  const [categorySelected, setCategorySelected] = useState(categories[0]);
   return (
     <>
       <Head>
@@ -24,12 +26,43 @@ export default function Home({ products }: Props) {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <main className={montserrat.className}>
-        <div className={'image-container'}>
-          <Image className='image' src='/logo.png' alt='Alma Tapas' fill />
-        </div>
+        <header>
+          <div className={'image-container'}>
+            <Image className='image' src='/logo.png' alt='Alma Tapas' fill />
+          </div>
+          <select
+            name='language'
+            id='language'
+            value={i18n?.resolvedLanguage}
+            onChange={(e: any) => {
+              i18n?.changeLanguage(e.target.value);
+            }}
+          >
+            <option value='en'>English</option>
+            <option value='es'>Español</option>
+          </select>
+        </header>
+        <label>{t('main.menu')}</label>
+        <select
+          className='categories'
+          name='categories'
+          id='categories'
+          value={categorySelected}
+          onChange={(e: any) => {
+            const element = document.getElementById(e.target.value);
+            element?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+            setCategorySelected(e.target.value);
+          }}
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {t(`main.${category}`).toUpperCase()}
+            </option>
+          ))}
+        </select>
         {categories.map((category) => (
           <div className='category' key={category}>
-            <h2>{t(`main.${category}`)}</h2>
+            <h2 id={category}>{t(`main.${category}`).toUpperCase()}</h2>
             <ul>
               {products
                 .filter((product: any) => product.type === category)
