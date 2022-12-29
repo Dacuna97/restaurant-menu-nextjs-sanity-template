@@ -36,14 +36,26 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 h1 {
   font-size: 2rem;
   font-weight: 500;
   margin: 1rem 0;
 }
-.logo {
+.image-container {
+  width: 100%;
+  max-width: 200px;
+}
+.image-container > div {
+  position: unset !important;
+}
+.image-container .image {
   margin: 1rem 0;
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
 h2 {
   font-size: 1.5rem;

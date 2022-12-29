@@ -2,6 +2,7 @@ import { Montserrat } from '@next/font/google';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
+import Image from 'next/image';
 import Product from '../components/Product';
 import { client } from '../lib/client';
 
@@ -23,7 +24,9 @@ export default function Home({ products }: Props) {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <main className={montserrat.className}>
-        <img className='logo' src='/logo.png' alt='Alma Tapas' />
+        <div className={'image-container'}>
+          <Image className='image' src='/logo.png' alt='Alma Tapas' fill />
+        </div>
         {categories.map((category) => (
           <div className='category' key={category}>
             <h2>{t(`main.${category}`)}</h2>
