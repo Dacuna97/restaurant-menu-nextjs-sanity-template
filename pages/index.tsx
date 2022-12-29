@@ -13,8 +13,7 @@ type Props = {
 
 export default function Home({ products }: Props) {
   const { t } = useTranslation();
-
-  console.log('products', products);
+  const categories = ['to_share', 'to_continue', 'for_kids', 'dessert', 'wine_beer'];
   return (
     <>
       <Head>
@@ -24,32 +23,19 @@ export default function Home({ products }: Props) {
         {/* <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <main className={montserrat.className}>
-        {/* <h1>Alma Tapas</h1> */}
         <img className='logo' src='/logo.png' alt='Alma Tapas' />
-        <h2>{t('main.toShare')}</h2>
-        <ul>
-          {products
-            .filter((product: any) => product.type === 'to_share')
-            .map((product: any) => (
-              <Product key={product._id} product={product} />
-            ))}
-        </ul>
-        <h2>{t('main.toContinue')}</h2>
-        <ul>
-          {products
-            .filter((product: any) => product.type === 'to_continue')
-            .map((product: any) => (
-              <Product key={product._id} product={product} />
-            ))}
-        </ul>
-        <h2>{t('main.forKids')}</h2>
-        <ul>
-          {products
-            .filter((product: any) => product.type === 'for_kids')
-            .map((product: any) => (
-              <Product key={product._id} product={product} />
-            ))}
-        </ul>
+        {categories.map((category) => (
+          <div className='category' key={category}>
+            <h2>{t(`main.${category}`)}</h2>
+            <ul>
+              {products
+                .filter((product: any) => product.type === category)
+                .map((product: any) => (
+                  <Product key={product._id} product={product} />
+                ))}
+            </ul>
+          </div>
+        ))}
       </main>
     </>
   );

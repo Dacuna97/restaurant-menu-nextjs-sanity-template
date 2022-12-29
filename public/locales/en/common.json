@@ -1,7 +1,9 @@
 {
   "main": {
-    "toShare": "To share",
-    "toContinue": "To continue",
-    "forKids": "For kids"
+    "to_share": "To share",
+    "to_continue": "To continue",
+    "for_kids": "For kids",
+    "dessert": "Dessert",
+    "wine_beer": "Wine & Beer"
   }
 }

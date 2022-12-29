@@ -55,6 +55,9 @@ h3 {
   font-size: 1.2rem;
   font-weight: 600;
 }
+.category {
+  width: 100%;
+}
 ul {
   list-style: none;
   display: flex;
@@ -62,6 +65,7 @@ ul {
   row-gap: 1rem;
   border-bottom: 1px solid #ccc;
   padding-bottom: 1rem;
+  width: 100%;
 }
 
 li {

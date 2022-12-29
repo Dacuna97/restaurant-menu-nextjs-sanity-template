@@ -80,6 +80,17 @@ export default {
       name: 'type',
       title: 'Type',
       type: 'string',
+      initialValue: 'to_share',
+      options: {
+        list: [
+          {title: 'To share', value: 'to_share'},
+          {title: 'To continue', value: 'to_continue'},
+          {title: 'For kids', value: 'for_kids'},
+          {title: 'Dessert', value: 'dessert'},
+          {title: 'Wine & beer', value: 'wine_beer'},
+        ], // <-- predefined values
+        //layout: 'radio' // <-- defaults to 'dropdown'
+      },
     },
   ],
   preview: {

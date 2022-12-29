@@ -1,7 +1,9 @@
 {
   "main": {
-    "toShare": "Para compartir",
-    "toContinue": "Para seguir",
-    "forKids": "Para niños"
+    "to_share": "Para compartir",
+    "to_continue": "Para seguir",
+    "for_kids": "Para niños",
+    "dessert": "Postre",
+    "wine_beer": "Vino y cerveza"
   }
 }
